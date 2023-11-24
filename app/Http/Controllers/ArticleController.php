@@ -37,18 +37,7 @@ class ArticleController extends Controller
     }
     public function update(ArticleRequest $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'your_field' => 'required|custom_validation_rule',
-        ], [], [
-            'custom_validation_rule' => __('custom-validation.custom_validation_rule'),
-        ]);
 
-        if ($validator->fails()) {
-            // バリデーションエラーの場合の処理
-            return redirect(route("articles.create"))
-                ->withErrors($validator)
-                ->withInput();
-        }
         // ここはidで探して持ってくる以外はstoreと同じ
         $article = article::find($id);
 
